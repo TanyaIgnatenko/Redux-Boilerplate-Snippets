@@ -1,0 +1,27 @@
+<templateSet group="Redux">
+  <template name="action" value="export const $ACTION_NAME$ = &quot;@@$DOMAIN$/$ACTION_NAME$&quot;;&#10;&#10;export const $CAMEL_CASED_ACTION_NAME$ = ($PARAM$) =&gt; {&#10;  return {&#10;    type: $ACTION_NAME$,&#10;    $PARAM$,&#10;  };&#10;};&#10;&#10;case $ACTION_NAME$: {&#10;    $CODE$&#10;    return {&#10;        ...state,&#10;        $UPDATED_STATE$,&#10;    }&#10;}" description="generate redux boilerplate for one action" toReformat="true" toShortenFQNames="true">
+    <variable name="ACTION_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DOMAIN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CAMEL_CASED_ACTION_NAME" expression="camelCase(ACTION_NAME)" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAM" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="UPDATED_STATE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="fetch-action" value="export const FETCH_$DATA$ = {&#10;    REQUEST: &quot;@@$DOMAIN$/FETCH_$DATA$_REQUEST&quot;,&#10;    SUCCESS: &quot;@@$DOMAIN$/FETCH_$DATA$_SUCCESS&quot;,&#10;    ERROR: &quot;@@$DOMAIN$/FETCH_$DATA$_ERROR&quot;,&#10;};&#10;&#10;export const fetch$PASCAL_CASED_DATA$Request = ($PARAM$) =&gt; {&#10;  return {&#10;    type: FETCH_$DATA$.REQUEST,&#10;    $PARAM$,&#10;  };&#10;};&#10;&#10;export const fetch$PASCAL_CASED_DATA$Success = ($CAMEL_CASED_DATA$) =&gt; {&#10;  return {&#10;    type: FETCH_$DATA$.SUCCESS,&#10;    $CAMEL_CASED_DATA$,&#10;  };&#10;};&#10;&#10;export const fetch$PASCAL_CASED_DATA$Error = (error) =&gt; {&#10;  return {&#10;    type: FETCH_$DATA$.ERROR,&#10;    error,&#10;  };&#10;};&#10;&#10;case FETCH_$DATA$.SUCCESS: {&#10;    $CODE$&#10;    return {&#10;        ...state,&#10;        $UPDATED_STATE$,&#10;    }&#10;}" description="generate redux boilerplate for one fetch some data action" toReformat="false" toShortenFQNames="true">
+    <variable name="DATA" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DOMAIN" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PASCAL_CASED_DATA" expression="capitalize(camelCase(DATA))" defaultValue="" alwaysStopAt="true" />
+    <variable name="CAMEL_CASED_DATA" expression="camelCase(DATA)" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAM" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="UPDATED_STATE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JS_EXPRESSION" value="true" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+</templateSet>
