@@ -52,10 +52,10 @@ export const FETCH_$DATA$ = {
     ERROR: "@@$DOMAIN$/FETCH_$DATA$_ERROR",
 };
 
-export const fetch$PASCAL_CASED_DATA$Request = ($PARAM$) => {
+export const fetch$PASCAL_CASED_DATA$Request = ($PARAMS$) => {
   return {
     type: FETCH_$DATA$.REQUEST,
-    $PARAM$,
+    $PARAMS$,
   };
 };
 
@@ -74,10 +74,26 @@ export const fetch$PASCAL_CASED_DATA$Error = (error) => {
 };
 
 case FETCH_$DATA$.SUCCESS: {
-    $CODE$
     return {
         ...state,
-        $UPDATED_STATE$,
+        $CAMEL_CASED_DATA$: action.$CAMEL_CASED_DATA$,
     }
+}
+
+function* fetch$PASCAL_CASED_DATA$({ $PARAMS$ }) {
+  try {
+    const $CAMEL_CASED_DATA$ = yield call(services.fetch$PASCAL_CASED_DATA$, $PARAMS$);
+    yield put(fetch$PASCAL_CASED_DATA$Success($CAMEL_CASED_DATA$));
+  } catch (e) {
+    yield put(fetch$PASCAL_CASED_DATA$Error(e));
+  }
+}
+
+export function fetch$PASCAL_CASED_DATA$Request($PARAMS$) {
+  return request.get(SERVER_END_POINT.FETCH_$DATA$, {
+    params: {
+       $PARAMS$,
+    }
+  }
 }
 ```
